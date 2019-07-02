@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 1m
+  scrape_timeout: 10s
+  evaluation_interval: 1m
+scrape_configs:
+- job_name: IsThisReallyWorking
+  scrape_interval: 5s
+  scrape_timeout: 5s
+  metrics_path: /metrics
+  static_configs:
+  - targets: ['docker.for.mac.localhost:3000']
+    labels:
+      group: 'express-app'
+- job_name: 'prometheus'
+  scrape_interval: 5s
+  scrape_timeout: 5s
+  metrics_path: /metrics
+  static_configs:
+  - targets: ['localhost:9090']
+    labels:
+      group: 'prometheus-app'
